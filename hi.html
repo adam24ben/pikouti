@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Beloved</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blush: #F8E1E4;
+      --rose: #D8A6B1;
+      --deep-rose: #9E6B74;
+      --gold: #D4AF37;
+      --ivory: #FFF9F0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--ivory);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin: 3rem 0;
+      max-width: 800px;
+    }
+
+    .header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: var(--deep-rose);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: var(--deep-rose);
+      font-weight: 300;
+    }
+
+    .divider {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+    }
+
+    /* Menu cards */
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem 0;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 5px 25px rgba(158, 107, 116, 0.08);
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(216, 166, 177, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--rose), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(158, 107, 116, 0.12);
+    }
+
+    .menu-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .menu-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--deep-rose);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-card:hover .icon {
+      transform: scale(1.1);
+    }
+
+    .menu-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--deep-rose);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .menu-card p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #666;
+      font-weight: 300;
+    }
+
+    /* Elegant button */
+    .menu-btn {
+      background: transparent;
+      color: var(--deep-rose);
+      border: 1px solid var(--rose);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .menu-btn:hover {
+      background: var(--rose);
+      color: white;
+      box-shadow: 0 5px 15px rgba(216, 166, 177, 0.3);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 4rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--deep-rose);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Floating rose petals */
+    .petal {
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.8;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.8rem;
+      }
+      
+      .menu {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .menu-card {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating rose petals -->
+  <div class="petal" style="left:10%; animation-delay:0s;">🌹</div>
+  <div class="petal" style="left:30%; animation-delay:2s;">🌸</div>
+  <div class="petal" style="left:70%; animation-delay:4s;">🌷</div>
+  <div class="petal" style="left:90%; animation-delay:6s;">💮</div>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>For My pikouti</h1>
+    <div class="divider"></div>
+    <p>A collection of moments and memories</p>
+  </div>
+
+  <!-- Menu cards -->
+  <div class="menu">
+    <div class="menu-card">
+      <div class="icon">💌</div>
+      <h2>Love Letter</h2>
+      <p>A heartfelt message expressing my deepest feelings for you</p>
+      <a href="jj.html" class="menu-btn">Read Letter</a>
+    </div>
+
+    <div class="menu-card">
+      <div class="icon">🧸</div>
+      <h2>Teddy's Choice</h2>
+      <p>A playful game to find the most adorable companion</p>
+      <a href="ggs.html" class="menu-btn">Begin Game</a>
+    </div>
+
+    <div class="menu-card">
+      <div class="icon">📝</div>
+      <h2>Our Love Quiz</h2>
+      <p>Test your knowledge of our special connection</p>
+      <a href="q&a.html" class="menu-btn">Start Quiz</a>
+    </div>
+
+    <div class="menu-card">
+      <div class="icon">🎓</div>
+      <h2>Celebration</h2>
+      <p>Honoring your recent achievements and successes</p>
+      <a href="byebye.html" class="menu-btn">View Celebration</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Created with endless affection by Dimoutek
+  </div>
+
+  <script>
+    // Create floating petals on click
+    document.addEventListener('click', function(e) {
+      const petals = ['🌹', '🌸', '🌷', '💮', '🏵️'];
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+      petal.style.left = e.clientX + 'px';
+      petal.style.top = e.clientY + 'px';
+      petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(petal);
+      
+      setTimeout(() => petal.remove(), 8000);
+    });
+
+    // Random floating petals
+    setInterval(() => {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.innerHTML = ['🌹', '🌸', '🌷', '💮', '🏵️'][Math.floor(Math.random() * 5)];
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (Math.random() * 8 + 5) + 's';
+      document.body.appendChild(petal);
+      
+      setTimeout(() => petal.remove(), 13000);
+    }, 2000);
+  </script>
+</body>
+</html>  

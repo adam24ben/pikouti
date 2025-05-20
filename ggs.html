@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pikouti's Teddy Pick 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffe0f0, #fce3ec);
+      color: #5a2a44;
+      margin: 0;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      cursor: url('https://cdn-icons-png.flaticon.com/128/1077/1077035.png') 16 16, auto;
+    }
+
+    header {
+      text-align: center;
+      background-color: rgba(255, 245, 249, 0.9);
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(210, 99, 147, 0.3);
+      width: 90%;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(5px);
+      border: 3px solid #ffd1e1;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: #d94c84;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header p {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #8a4562;
+      margin-top: 0.5rem;
+    }
+
+    .game-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      width: 90%;
+      max-width: 800px;
+      flex-wrap: wrap;
+    }
+
+    .image-card {
+      cursor: pointer;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(220, 120, 160, 0.2);
+      background-color: white;
+      transition: all 0.3s ease;
+      border: 4px solid transparent;
+      flex: 1 1 45%;
+      min-width: 150px;
+      max-width: 300px;
+    }
+
+    .image-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(220, 120, 160, 0.3);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .caption {
+      padding: 1rem;
+      text-align: center;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #b94e68;
+      font-weight: bold;
+      background: linear-gradient(to right, #fff5f9, #ffebf2);
+    }
+
+    .result-message {
+      margin-top: 1.5rem;
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
+      font-weight: bold;
+      text-align: center;
+      color: #b94e68;
+      min-height: 3rem;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .correct {
+      border-color: #4caf50 !important;
+      animation: pulse 0.5s ease;
+    }
+
+    .incorrect {
+      border-color: #e53935 !important;
+      animation: shake 0.5s ease;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .final-score {
+      margin-top: 2rem;
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      color: #d94c84;
+      font-weight: bold;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .btn {
+      background-color: #ffd1e1;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #843b56;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(210, 99, 147, 0.2);
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .btn:hover {
+      background-color: #f9a8c3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(210, 99, 147, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-heart {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-heart::after {
+      content: '💖';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    .btn-heart:hover::after {
+      top: -10px;
+      opacity: 1;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float-up 4s ease-in-out forwards;
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    .progress-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: #ffebf2;
+      border-radius: 10px;
+      margin: 1rem 0;
+      height: 15px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff9bb8, #d94c84);
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Cute decorations */
+    .decoration {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    .decoration:nth-child(1) { top: 10%; left: 5%; }
+    .decoration:nth-child(2) { top: 20%; right: 8%; }
+    .decoration:nth-child(3) { bottom: 15%; left: 7%; }
+    .decoration:nth-child(4) { bottom: 25%; right: 5%; }
+  </style>
+</head>
+<body>
+  <!-- Cute floating decorations -->
+  <div class="decoration">🌸</div>
+  <div class="decoration">💖</div>
+  <div class="decoration">🍭</div>
+  <div class="decoration">🧸</div>
+
+  <header>
+    <h1>🧸 Pikouti's Teddy Pick 💖</h1>
+    <p>Pick the cutest thing you see! The left one is always the correct answer 😉</p>
+  </header>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="game-container" id="gameContainer"></div>
+  <div class="result-message" id="resultMessage"></div>
+  <div class="final-score hidden" id="finalScore"></div>
+  
+  <div class="button-container hidden" id="buttonContainer">
+    <button class="btn btn-heart" onclick="restartGame()">Play Again 💘</button>
+    <a href="hi.html" class="btn btn-heart">back home 🎀</a>
+  </div>
+
+  <!-- Sound -->
+  <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_f1c91c6ef6.mp3" preload="auto"></audio>
+  <audio id="winSound" src="https://cdn.pixabay.com/audio/2021/08/04/audio_39d38d1968.mp3" preload="auto"></audio>
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    const leftImage = {
+      src: "Phone Link/Snapchat-26162080 (2).jpg",
+      alt: "Beautiful Malek",
+      caption: "Malek 💗",
+      correct: true,
+      resultText: "✅ Sahiiitttt Pikouti! You picked the most beautiful one! 💞"
+    };
+
+    const rightImages = [
+      {
+        src: "NVA-panda.jpg",
+        alt: "Playful Panda",
+        caption: "Playful Panda 🐼",
+        resultText: "❌ Cute pick, but it's not you! 💖"
+      },
+      {
+        src: "SunsetFeeling-e1512674741646.jpg",
+        alt: "Sunset",
+        caption: "Sunset 🌅",
+        resultText: "❌ Beautiful, but not even close to you! 🌸"
+      },
+      {
+        src: "beautiful-forests.jpg",
+        alt: "Forest",
+        caption: "Magical Forest 🌲",
+        resultText: "❌ Peaceful but no match for your beauty! 🍃"
+      },
+      {
+        src: "file-20211123-17-199wbff.avif",
+        alt: "Galaxy",
+        caption: "The Galaxy 🌌",
+        resultText: "❌ Cosmic beauty! Still not you! ✨"
+      }
+    ];
+
+    const totalRounds = 5;
+    let currentRound = 0;
+    let score = 0;
+
+    const gameContainer = document.getElementById('gameContainer');
+    const resultMessage = document.getElementById('resultMessage');
+    const finalScore = document.getElementById('finalScore');
+    const buttonContainer = document.getElementById('buttonContainer');
+    const progressBar = document.getElementById('progressBar');
+    const clickSound = document.getElementById('clickSound');
+    const winSound = document.getElementById('winSound');
+
+    let currentRightIndex = -1;
+
+    function getRandomRightIndex() {
+      let index;
+      do {
+        index = Math.floor(Math.random() * rightImages.length);
+      } while (index === currentRightIndex);
+      return index;
+    }
+
+    function createImageCard(imageObj, isCorrect) {
+      const card = document.createElement('div');
+      card.className = 'image-card';
+
+      const img = document.createElement('img');
+      img.src = imageObj.src;
+      img.alt = imageObj.alt;
+      img.loading = "lazy";
+
+      const caption = document.createElement('div');
+      caption.className = 'caption';
+      caption.textContent = imageObj.caption;
+
+      card.appendChild(img);
+      card.appendChild(caption);
+
+      card.addEventListener('click', () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+
+        resultMessage.textContent = imageObj.resultText;
+        if (isCorrect) {
+          score++;
+          createHearts(10);
+          confetti({ 
+            particleCount: 100, 
+            spread: 70, 
+            origin: { y: 0.6 },
+            colors: ['#ff9bb8', '#ffd1e1', '#d94c84']
+          });
+        } else {
+          createHearts(3);
+        }
+
+        card.classList.add(isCorrect ? 'correct' : 'incorrect');
+        disableCards();
+
+        setTimeout(() => {
+          currentRound++;
+          updateProgressBar();
+          if (currentRound < totalRounds) {
+            loadGame();
+          } else {
+            endGame();
+          }
+        }, 1800);
+      });
+
+      return card;
+    }
+
+    function createHearts(count) {
+      const container = document.createElement('div');
+      container.className = 'floating-hearts';
+      document.body.appendChild(container);
+
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = ['💖', '💗', '💓', '💘', '💝'][Math.floor(Math.random() * 5)];
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        container.appendChild(heart);
+      }
+
+      setTimeout(() => {
+        container.remove();
+      }, 4000);
+    }
+
+    function disableCards() {
+      document.querySelectorAll('.image-card').forEach(card => {
+        card.classList.add('disabled');
+      });
+    }
+
+    function updateProgressBar() {
+      const progress = (currentRound / totalRounds) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    function loadGame() {
+      resultMessage.textContent = '';
+      gameContainer.innerHTML = '';
+
+      currentRightIndex = getRandomRightIndex();
+      const rightImage = rightImages[currentRightIndex];
+
+      const leftCard = createImageCard(leftImage, true);
+      const rightCard = createImageCard(rightImage, false);
+
+      gameContainer.appendChild(leftCard);
+      gameContainer.appendChild(rightCard);
+    }
+
+    function endGame() {
+      resultMessage.textContent = '';
+      gameContainer.innerHTML = '';
+      
+      const percentage = Math.round((score / totalRounds) * 100);
+      let message;
+      
+      if (percentage === 100) {
+        message = `Perfect score! ${score} out of ${totalRounds}! You're absolutely amazing! 💯💝`;
+        winSound.play();
+        confetti({ 
+          particleCount: 300, 
+          spread: 100, 
+          origin: { y: 0.6 },
+          colors: ['#ff9bb8', '#ffd1e1', '#d94c84']
+        });
+        createHearts(20);
+      } else if (percentage >= 80) {
+        message = `Wow! ${score} out of ${totalRounds}! You know what's beautiful! 😍💖`;
+        createHearts(15);
+      } else if (percentage >= 60) {
+        message = `Good job! ${score} out of ${totalRounds}! You've got good taste! 💗🌸`;
+        createHearts(10);
+      } else {
+        message = `${score} out of ${totalRounds}! You'll do better next time! 💞🍭`;
+        createHearts(5);
+      }
+      
+      finalScore.textContent = message;
+      finalScore.classList.remove('hidden');
+      buttonContainer.classList.remove('hidden');
+    }
+
+    function restartGame() {
+      score = 0;
+      currentRound = 0;
+      finalScore.textContent = '';
+      finalScore.classList.add('hidden');
+      buttonContainer.classList.add('hidden');
+      progressBar.style.width = '0%';
+      loadGame();
+    }
+
+    // Initialize game
+    loadGame();
+    updateProgressBar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To My Sweetest Pikouti 🥰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff9bb8;
+      --dark-pink: #dd4998;
+      --light-pink: #ffd1e1;
+      --yellow: #fffacd;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: var(--yellow);
+      color: #5a2a44;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: url('https://img.freepik.com/free-vector/cute-pink-heart-pattern-background-doodle_53876-140178.jpg?w=1380&t=st=1716123456~exp=1716124056~hmac=1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef');
+      background-attachment: fixed;
+      padding: 0 10px; /* Added padding for mobile */
+    }
+
+    /* Cute header */
+    .header {
+      text-align: center;
+      padding: 1.5rem 1rem; /* Reduced padding for mobile */
+      background-color: var(--light-pink);
+      border-bottom: 5px dotted var(--dark-pink);
+      position: relative;
+      margin-bottom: 1rem; /* Reduced margin */
+    }
+
+    .header h1 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 2.2rem; /* Smaller font for mobile */
+      color: var(--dark-pink);
+      text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+      margin-bottom: 0.5rem; /* Reduced margin */
+    }
+
+    .header p {
+      font-size: 1.1rem; /* Smaller font for mobile */
+      color: #8a4562;
+    }
+
+    /* Sticker effect */
+    .sticker {
+      position: absolute;
+      width: 50px; /* Smaller stickers */
+      height: 50px;
+      background-color: var(--pink);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem; /* Smaller icon */
+      transform: rotate(-15deg);
+      box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+    }
+
+    .sticker-1 {
+      top: 10px; /* Adjusted position */
+      left: 10px;
+    }
+
+    .sticker-2 {
+      bottom: 10px; /* Adjusted position */
+      right: 10px;
+    }
+
+    /* Love letter sections */
+    .love-section {
+      max-width: 800px;
+      margin: 1rem auto; /* Reduced margin */
+      padding: 1.5rem; /* Reduced padding */
+      background-color: white;
+      border-radius: 15px; /* Slightly smaller radius */
+      box-shadow: 3px 3px 0px var(--pink); /* Smaller shadow */
+      border: 2px dashed var(--dark-pink); /* Thinner border */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .love-section h2 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.8rem; /* Smaller heading */
+      color: var(--dark-pink);
+      margin-bottom: 0.8rem; /* Reduced margin */
+      text-decoration: underline wavy var(--pink);
+    }
+
+    /* Photo collage */
+    .photo-collage {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+      gap: 8px; /* Smaller gap */
+      margin: 1rem 0; /* Reduced margin */
+    }
+
+    .photo {
+      border-radius: 10px; /* Smaller radius */
+      overflow: hidden;
+      box-shadow: 2px 2px 3px rgba(0,0,0,0.2); /* Smaller shadow */
+      transition: transform 0.3s;
+      border: 2px solid white; /* Thinner border */
+    }
+
+    .photo:hover {
+      transform: rotate(5deg) scale(1.1);
+      z-index: 1;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Reasons list */
+    .reasons-list {
+      list-style-type: none;
+    }
+
+    .reasons-list li {
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      background-color: var(--light-pink);
+      border-radius: 8px; /* Smaller radius */
+      position: relative;
+      padding-left: 2rem; /* Reduced padding */
+      font-size: 0.9rem; /* Smaller font */
+    }
+
+    .reasons-list li::before {
+      content: '💕';
+      position: absolute;
+      left: 8px; /* Adjusted position */
+    }
+
+    /* Cute button */
+    .cute-button {
+      display: block;
+      margin: 1.5rem auto; /* Reduced margin */
+      padding: 0.8rem 1.5rem; /* Smaller button */
+      background-color: var(--pink);
+      color: white;
+      border: none;
+      border-radius: 40px; /* Slightly smaller */
+      font-size: 1.2rem; /* Smaller font */
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 0px var(--dark-pink); /* Smaller shadow */
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cute-button:hover {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0px var(--dark-pink);
+    }
+
+    .cute-button:active {
+      transform: translateY(5px);
+      box-shadow: none;
+    }
+
+    .cute-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 10%, transparent 70%);
+      transform: scale(0);
+      transition: transform 0.5s;
+    }
+
+    .cute-button:hover::after {
+      transform: scale(1);
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.2rem; /* Smaller hearts */
+      animation: float-up 5s linear forwards;
+      z-index: 100;
+    }
+
+    @keyframes float-up {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Handwritten note effect */
+    .handwritten {
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.1rem; /* Smaller font */
+      line-height: 1.6; /* Tighter line height */
+      background-color: #fffaf0;
+      padding: 1rem; /* Reduced padding */
+      border-radius: 0 10px 10px 10px; /* Smaller radius */
+      border-left: 3px solid var(--pink); /* Thinner border */
+      margin: 0.8rem 0; /* Reduced margin */
+      box-shadow: 2px 2px 3px rgba(0,0,0,0.1); /* Smaller shadow */
+    }
+
+    /* Responsive - Tablet and larger */
+    @media (min-width: 600px) {
+      .header {
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      .header h1 {
+        font-size: 2.8rem;
+      }
+      
+      .header p {
+        font-size: 1.3rem;
+      }
+      
+      .sticker {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+      
+      .love-section {
+        padding: 2rem;
+        margin: 1.5rem auto;
+      }
+      
+      .love-section h2 {
+        font-size: 2.2rem;
+      }
+      
+      .photo-collage {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .reasons-list li {
+        font-size: 1rem;
+      }
+      
+      .cute-button {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+      }
+    }
+
+    /* Responsive - Desktop */
+    @media (min-width: 900px) {
+      .header h1 {
+        font-size: 3.5rem;
+      }
+      
+      .photo-collage {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cute header with stickers -->
+  <header class="header">
+    <div class="sticker sticker-1">💖</div>
+    <h1>To My Sweetest Pikouti</h1>
+    <p>The most amazing Leo in the whole universe 🦁✨</p>
+    <div class="sticker sticker-2">🌟</div>
+  </header>
+
+  <!-- First love section -->
+  <section class="love-section">
+    <h2>How We Met 💘</h2>
+    <p>Remember when we first met at RealGym? I knew right then you were someone special! Your smile made my heart go doki-doki 💗</p>
+    <div class="handwritten">
+      "That day my life changed forever... I found my sunshine in human form ☀️"
+    </div>
+  </section>
+
+  <!-- Photo collage -->
+  <section class="love-section">
+    <h2>Our Cute Memories 📸</h2>
+    <p>Look at these adorable moments we've shared! I treasure each one like a precious gem 💎</p>
+    
+    <div class="photo-collage">
+      <div class="photo">
+        <img src="unnamed (2).jpg" alt="Us being cute">
+      </div>
+      <div class="photo">
+        <img src="Phone Link/Snapchat-1502067419.jpg" alt="Us being adorable">
+      </div>
+      <div class="photo">
+        <img src="Phone Link/Snapchat-1136359093.jpg" alt="Best day ever">
+      </div>
+      <div class="photo">
+        <img src="Phone Link/IMG_20250519_010854.jpg" alt="So much love">
+      </div>
+      <div class="photo">
+        <img src="Phone Link/Snapchat-1688396212.jpg" alt="Perfect together">
+      </div>
+      <div class="photo">
+        <img src="IMG_20250422_231001_0964.jpg" alt="My favorite person">
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons section -->
+  <section class="love-section">
+    <h2>Why You're The Best 🌈</h2>
+    <p>Let me count the ways (but we'll be here all day if I list them all!)</p>
+    
+    <ul class="reasons-list">
+      <li>Your smile makes my heart do backflips 🤸‍♂️</li>
+      <li>You're the perfect cuddle buddy 🧸</li>
+      <li>Your laugh is my favorite sound in the world 🎶</li>
+      <li>You're smart AND beautiful - how is that fair? 😍</li>
+      <li>You always know how to make me feel better 🥰</li>
+      <li>You put up with my silliness (and that's saying something!) 🤪</li>
+    </ul>
+  </section>
+
+  <!-- Future dreams -->
+  <section class="love-section">
+    <h2>Our Future Together ✨</h2>
+    <p>I can't wait for all our adventures! Here's what I dream about:</p>
+    
+    <div class="handwritten">
+      "Growing old with you but never growing up...<br>
+      More cuddles, more laughs, more love than we can handle!<br>
+      Maybe a little house with a garden where we can be happy together 🌸"
+    </div>
+  </section>
+
+  <!-- Final love letter -->
+  <section class="love-section">
+    <h2>My Love Letter to You 💌</h2>
+    <div class="handwritten">
+      "My dearest Pikouti,<br><br>
+      I'm writing this with a big dumb smile on my face because just thinking about you makes me so happy!<br><br>
+      You're my favorite person to talk to, my favorite person to cuddle with, and my favorite person to be silly with. Life with you is like living in a rom-com, but better because it's real!<br><br>
+      No matter what happens, I'll always be here for you - to laugh with you, support you, and love you with all my heart.<br><br>
+      Yours forever,<br>
+      Your Dimoutek 💝"
+    </div>
+  </section>
+
+  <!-- Cute button -->
+  <button class="cute-button" onclick="location.href='hi.html'">
+    go back home 💘 
+  </button>
+
+  <script>
+    // Create floating hearts when clicked
+    document.addEventListener('click', function(e) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = ['💖', '💗', '💓', '💘', '💝'][Math.floor(Math.random() * 5)];
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+      
+      // Remove heart after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    });
+
+    // Make photos wiggle randomly
+    const photos = document.querySelectorAll('.photo');
+    setInterval(() => {
+      photos.forEach(photo => {
+        if(Math.random() > 0.7) {
+          photo.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+        }
+      });
+    }, 2000);
+  </script>
+</body>
+</html>
