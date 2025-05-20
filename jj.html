@@ -21,98 +21,101 @@
 
     body {
       font-family: 'Comic Neue', cursive;
-      background-color: var(--yellow);
+      background-color: var(--light-pink);
       color: #5a2a44;
       line-height: 1.6;
       overflow-x: hidden;
-      background-image: url('https://img.freepik.com/free-vector/cute-pink-heart-pattern-background-doodle_53876-140178.jpg?w=1380&t=st=1716123456~exp=1716124056~hmac=1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef');
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,50 Q50,30 70,50 Q85,65 50,85 Q15,65 30,50 Z" fill="%23ff9bb8" opacity="0.2"/></svg>');
+      background-size: 150px;
       background-attachment: fixed;
-      padding: 0 10px; /* Added padding for mobile */
+      padding: 0 10px;
     }
 
     /* Cute header */
     .header {
       text-align: center;
-      padding: 1.5rem 1rem; /* Reduced padding for mobile */
+      padding: 1.5rem 1rem;
       background-color: var(--light-pink);
       border-bottom: 5px dotted var(--dark-pink);
       position: relative;
-      margin-bottom: 1rem; /* Reduced margin */
+      margin-bottom: 1rem;
+      background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="2" fill="%23dd4998" opacity="0.3"/></svg>');
     }
 
     .header h1 {
       font-family: 'Indie Flower', cursive;
-      font-size: 2.2rem; /* Smaller font for mobile */
+      font-size: 2.2rem;
       color: var(--dark-pink);
       text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
-      margin-bottom: 0.5rem; /* Reduced margin */
+      margin-bottom: 0.5rem;
     }
 
     .header p {
-      font-size: 1.1rem; /* Smaller font for mobile */
+      font-size: 1.1rem;
       color: #8a4562;
     }
 
     /* Sticker effect */
     .sticker {
       position: absolute;
-      width: 50px; /* Smaller stickers */
+      width: 50px;
       height: 50px;
       background-color: var(--pink);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.5rem; /* Smaller icon */
+      font-size: 1.5rem;
       transform: rotate(-15deg);
       box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
     }
 
     .sticker-1 {
-      top: 10px; /* Adjusted position */
+      top: 10px;
       left: 10px;
     }
 
     .sticker-2 {
-      bottom: 10px; /* Adjusted position */
+      bottom: 10px;
       right: 10px;
     }
 
     /* Love letter sections */
     .love-section {
       max-width: 800px;
-      margin: 1rem auto; /* Reduced margin */
-      padding: 1.5rem; /* Reduced padding */
-      background-color: white;
-      border-radius: 15px; /* Slightly smaller radius */
-      box-shadow: 3px 3px 0px var(--pink); /* Smaller shadow */
-      border: 2px dashed var(--dark-pink); /* Thinner border */
+      margin: 1rem auto;
+      padding: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 3px 3px 0px var(--pink);
+      border: 2px dashed var(--dark-pink);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(2px);
     }
 
     .love-section h2 {
       font-family: 'Indie Flower', cursive;
-      font-size: 1.8rem; /* Smaller heading */
+      font-size: 1.8rem;
       color: var(--dark-pink);
-      margin-bottom: 0.8rem; /* Reduced margin */
+      margin-bottom: 0.8rem;
       text-decoration: underline wavy var(--pink);
     }
 
     /* Photo collage */
     .photo-collage {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-      gap: 8px; /* Smaller gap */
-      margin: 1rem 0; /* Reduced margin */
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 1rem 0;
     }
 
     .photo {
-      border-radius: 10px; /* Smaller radius */
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 2px 2px 3px rgba(0,0,0,0.2); /* Smaller shadow */
+      box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
       transition: transform 0.3s;
-      border: 2px solid white; /* Thinner border */
+      border: 2px solid white;
     }
 
     .photo:hover {
@@ -135,31 +138,31 @@
       padding: 0.5rem;
       margin-bottom: 0.5rem;
       background-color: var(--light-pink);
-      border-radius: 8px; /* Smaller radius */
+      border-radius: 8px;
       position: relative;
-      padding-left: 2rem; /* Reduced padding */
-      font-size: 0.9rem; /* Smaller font */
+      padding-left: 2rem;
+      font-size: 0.9rem;
     }
 
     .reasons-list li::before {
       content: '💕';
       position: absolute;
-      left: 8px; /* Adjusted position */
+      left: 8px;
     }
 
     /* Cute button */
     .cute-button {
       display: block;
-      margin: 1.5rem auto; /* Reduced margin */
-      padding: 0.8rem 1.5rem; /* Smaller button */
+      margin: 1.5rem auto;
+      padding: 0.8rem 1.5rem;
       background-color: var(--pink);
       color: white;
       border: none;
-      border-radius: 40px; /* Slightly smaller */
-      font-size: 1.2rem; /* Smaller font */
+      border-radius: 40px;
+      font-size: 1.2rem;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 3px 0px var(--dark-pink); /* Smaller shadow */
+      box-shadow: 0 3px 0px var(--dark-pink);
       transition: all 0.2s;
       position: relative;
       overflow: hidden;
@@ -195,7 +198,7 @@
     .floating-heart {
       position: fixed;
       pointer-events: none;
-      font-size: 1.2rem; /* Smaller hearts */
+      font-size: 1.2rem;
       animation: float-up 5s linear forwards;
       z-index: 100;
     }
@@ -208,14 +211,14 @@
     /* Handwritten note effect */
     .handwritten {
       font-family: 'Indie Flower', cursive;
-      font-size: 1.1rem; /* Smaller font */
-      line-height: 1.6; /* Tighter line height */
+      font-size: 1.1rem;
+      line-height: 1.6;
       background-color: #fffaf0;
-      padding: 1rem; /* Reduced padding */
-      border-radius: 0 10px 10px 10px; /* Smaller radius */
-      border-left: 3px solid var(--pink); /* Thinner border */
-      margin: 0.8rem 0; /* Reduced margin */
-      box-shadow: 2px 2px 3px rgba(0,0,0,0.1); /* Smaller shadow */
+      padding: 1rem;
+      border-radius: 0 10px 10px 10px;
+      border-left: 3px solid var(--pink);
+      margin: 0.8rem 0;
+      box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
     }
 
     /* Responsive - Tablet and larger */
