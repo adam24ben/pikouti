@@ -67,7 +67,7 @@
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Main container - UPDATED BORDER STYLE */
+    /* Main container */
     .congrats-container {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 3rem;
@@ -77,7 +77,6 @@
       margin: 2rem;
       position: relative;
       overflow: hidden;
-      /* New softer border style */
       border: 2px solid var(--light-pink);
       outline: 1px solid white;
       outline-offset: -5px;
@@ -169,18 +168,18 @@
       transform: scale(1);
     }
 
-    /* Polaroid photos - UPDATED BORDER STYLE */
+    /* Polaroid photos - FIXED STYLING */
     .polaroid {
       background: white;
-      padding: 1rem 1rem 2rem;
+      padding: 1rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transform: rotate(-5deg);
       margin: 2rem auto;
       width: fit-content;
       transition: all 0.3s ease;
-      /* New border style */
       border: 1px solid #f8e1ea;
       border-radius: 2px;
+      max-width: 100%;
     }
 
     .polaroid:hover {
@@ -188,32 +187,48 @@
     }
 
     .polaroid img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      /* Updated image border */
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
       border: 1px solid #f5f5f5;
+      display: block;
+      margin: 0 auto;
     }
 
     .polaroid p {
       font-family: 'Indie Flower', cursive;
       font-size: 1.2rem;
       margin-top: 0.5rem;
+      padding: 0.5rem;
     }
 
-    /* Responsive */
+    /* Responsive - IMPROVED MOBILE SUPPORT */
     @media (max-width: 768px) {
       .congrats-container {
-        padding: 2rem 1rem;
+        padding: 1.5rem;
         margin: 1rem;
+        width: 95%;
       }
       
       h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       
       p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+      }
+      
+      .emoji-container {
+        font-size: 2rem;
+      }
+      
+      .polaroid {
+        transform: rotate(-2deg);
+        width: 90%;
+      }
+      
+      .polaroid img {
+        width: 100%;
       }
       
       body {
@@ -248,7 +263,7 @@
     </p>
     
     <div class="polaroid">
-      <img src="IMG-20250520-WA0000.jpg" alt="Pikouti being awesome"
+      <img src="IMG-20250520-WA0000.jpg" alt="Pikouti being awesome">
       <p>My smart cookie! 🍪</p>
     </div>
     
@@ -315,17 +330,26 @@
       setInterval(createConfetti, 5000);
     });
     
-    // Background music
-    const bgMusic = new Audio('Alex Warren - Ordinary (Official Music Video).mp3');
-    bgMusic.volume = 0.3;
-    
-    // Start music after first interaction
-    function enableMusic() {
-      document.removeEventListener('click', enableMusic);
-      bgMusic.play().catch(e => console.log("Auto-play prevented:", e));
+    // Background music - ADDED ERROR HANDLING
+    function initMusic() {
+      try {
+        const bgMusic = new Audio('Alex Warren - Ordinary (Official Music Video).mp3');
+        bgMusic.volume = 0.3;
+        
+        // Start music after first interaction
+        function enableMusic() {
+          document.removeEventListener('click', enableMusic);
+          bgMusic.play().catch(e => console.log("Auto-play prevented:", e));
+        }
+        
+        document.addEventListener('click', enableMusic);
+      } catch (e) {
+        console.log("Music initialization error:", e);
+      }
     }
     
-    document.addEventListener('click', enableMusic);
+    // Initialize music when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initMusic);
   </script>
 </body>
 </html>
