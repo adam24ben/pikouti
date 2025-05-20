@@ -21,13 +21,14 @@
 
     body {
       font-family: 'Comic Neue', cursive;
-      background-color: var(--light-pink);
+      background-color: #fff0f5;
       color: #5a2a44;
       line-height: 1.6;
       overflow-x: hidden;
-      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,50 Q50,30 70,50 Q85,65 50,85 Q15,65 30,50 Z" fill="%23ff9bb8" opacity="0.2"/></svg>');
-      background-size: 150px;
-      background-attachment: fixed;
+      background-image: 
+        radial-gradient(circle at 10px 10px, var(--pink) 2px, transparent 0),
+        radial-gradient(circle at 30px 30px, var(--dark-pink) 1.5px, transparent 0);
+      background-size: 40px 40px;
       padding: 0 10px;
     }
 
@@ -39,7 +40,9 @@
       border-bottom: 5px dotted var(--dark-pink);
       position: relative;
       margin-bottom: 1rem;
-      background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="2" fill="%23dd4998" opacity="0.3"/></svg>');
+      background-image: 
+        radial-gradient(circle at 10px 10px, rgba(221, 73, 152, 0.2) 3px, transparent 0);
+      background-size: 20px 20px;
     }
 
     .header h1 {
