@@ -105,7 +105,7 @@
       text-decoration: underline wavy var(--pink);
     }
 
-    /* Photo collage */
+    /* Photo collage - FIXED IMAGE SIZING */
     .photo-collage {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -119,6 +119,7 @@
       box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
       transition: transform 0.3s;
       border: 2px solid white;
+      aspect-ratio: 1/1; /* Ensures square images */
     }
 
     .photo:hover {
@@ -130,6 +131,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block; /* Removes extra space below images */
     }
 
     /* Reasons list */
@@ -310,7 +312,7 @@
         <img src="unnamed (2).jpg" alt="Us being cute">
       </div>
       <div class="photo">
-        <img src="Phone Link/Snapchat-1502067419.jpg" alt="Us being adorable"
+        <img src="Phone Link/Snapchat-1502067419.jpg" alt="Us being adorable">
       </div>
       <div class="photo">
         <img src="IMG-20250520-WA0003.jpg" alt="Best day ever">
