@@ -249,7 +249,6 @@
       display: none;
     }
 
-    /* Cute decorations */
     .decoration {
       position: absolute;
       font-size: 20px;
@@ -264,7 +263,6 @@
   </style>
 </head>
 <body>
-  <!-- Cute floating decorations -->
   <div class="decoration">🌸</div>
   <div class="decoration">💖</div>
   <div class="decoration">🍭</div>
@@ -272,7 +270,7 @@
 
   <header>
     <h1>🧸 Pikouti's Teddy Pick 💖</h1>
-    <p>Pick the most beautiful thing you see! The left one is always the correct answer 😉</p>
+    <p>Pick the most beautiful thing you see! The right one is always the correct answer 😉</p>
   </header>
 
   <div class="progress-container">
@@ -288,15 +286,13 @@
     <a href="index.html" class="btn btn-heart">back home 🎀</a>
   </div>
 
-  <!-- Sound -->
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_f1c91c6ef6.mp3" preload="auto"></audio>
   <audio id="winSound" src="https://cdn.pixabay.com/audio/2021/08/04/audio_39d38d1968.mp3" preload="auto"></audio>
 
-  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
-    const leftImage = {
+    const malekImage = {
       src: "Phone Link/Snapchat-26162080 (2).jpg",
       alt: "Beautiful Malek",
       caption: "Malek 💗",
@@ -304,12 +300,18 @@
       resultText: "✅ Sahiiitttt Pikouti! You picked the most beautiful one! 💞"
     };
 
-    const rightImages = [
+    const otherImages = [
       {
         src: "NVA-panda.jpg",
         alt: "Playful Panda",
         caption: "Playful Panda 🐼",
         resultText: "❌ Cute pick, but it's not you! 💖"
+      },
+      {
+        src: "IMG-20250520-WA0003.jpg",
+        alt: "Adam",
+        caption: "Adam 🧸",
+        resultText: "❌ Nice try, but not as beautiful as you! 💝"
       },
       {
         src: "SunsetFeeling-e1512674741646.jpg",
@@ -342,16 +344,6 @@
     const progressBar = document.getElementById('progressBar');
     const clickSound = document.getElementById('clickSound');
     const winSound = document.getElementById('winSound');
-
-    let currentRightIndex = -1;
-
-    function getRandomRightIndex() {
-      let index;
-      do {
-        index = Math.floor(Math.random() * rightImages.length);
-      } while (index === currentRightIndex);
-      return index;
-    }
 
     function createImageCard(imageObj, isCorrect) {
       const card = document.createElement('div');
@@ -438,11 +430,9 @@
       resultMessage.textContent = '';
       gameContainer.innerHTML = '';
 
-      currentRightIndex = getRandomRightIndex();
-      const rightImage = rightImages[currentRightIndex];
-
-      const leftCard = createImageCard(leftImage, true);
-      const rightCard = createImageCard(rightImage, false);
+      const otherImage = otherImages[currentRound % otherImages.length];
+      const leftCard = createImageCard(otherImage, false);
+      const rightCard = createImageCard(malekImage, true);
 
       gameContainer.appendChild(leftCard);
       gameContainer.appendChild(rightCard);
@@ -491,7 +481,6 @@
       loadGame();
     }
 
-    // Initialize game
     loadGame();
     updateProgressBar();
   </script>
